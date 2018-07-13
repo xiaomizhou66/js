@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    /*   function displayInfo() {
+                                                                                                          var output = "";
+
+                                                                                                          if (typeof arguments[0].name == "string") {
+                                                                                                            output += "Name: " + arguments[0].name + "\n";
+                                                                                                            console.log(arguments.toLocaleString());
+                                                                                                          }
+
+                                                                                                          if (typeof arguments[0]["age"] == "number") {
+                                                                                                            output += "Age: " + arguments[0].age + "\n";
+                                                                                                          }
+
+                                                                                                          console.log(output);
+                                                                                                        }
+
+                                                                                                        displayInfo({
+                                                                                                          name: "Nicholas",
+                                                                                                          age: 29
+                                                                                                        });
+
+                                                                                                        displayInfo({
+                                                                                                          name: "Greg"
+                                                                                                        });
+                                                                                                     */
+
+
+    function displayInfo(args) {
+      var output = "";
+
+      if (typeof args.name == "string") {
+        output += "Name: " + args.name + "\n";
+        console.log(args.toLocaleString()); //[object Object]
+      }
+
+      if (typeof args["age"] == "number") {
+        output += "Age: " + args.age + "\n";
+      }
+
+      console.log(output); //Name: Nicholas    Age: 29
+    }
+
+    displayInfo({
+      name: "Nicholas",
+      age: 29
+    });
+
+
+
+    var colors = ["red", "green", "blue"];
+    console.log(colors.join(",")); //red,green,blue
+    console.log(colors.join("||")); //red||green||blue
+    console.log(colors.join("")); //redgreenblue
+    console.log(colors.join()); //red,green,blue
+    console.log(colors.join(undefined)); //red,green,blue
+
+    var colors = ["red", null, "blue"];
+    console.log(colors.join(",")); //red,,blue
+    console.log(colors.join("||")); //red||||blue
+
+
+    var colors = new Array(); //create an array
+    var count = colors.push("red", "green"); //push two items
+    console.log(count); //2
+
+    count = colors.push("black"); //push another item on
+    console.log(count); //3
+
+    var item = colors.pop(); //get the last item
+    console.log(item); //"black"
+    console.log(colors.length); //2
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

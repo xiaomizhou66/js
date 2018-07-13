@@ -1,0 +1,62 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+<head>
+  <title>Function Example 8</title>
+  <script type="text/javascript">
+    function doAdd(num1, num2) {
+      if (arguments.length == 1) {
+        console.log(num1 + 10);
+      } else if (arguments.length == 2) {
+        console.log(num1 + num2);
+      }
+    }
+    doAdd(10); //20
+    doAdd(30, 20); //50
+
+    var obj1 = new Object();
+    var obj2 = obj1;
+    obj2.name = 'xiaomi';
+    console.log(obj1.name); //xiaomi
+
+
+    function setName(obj) {
+      obj.name = "xiaomi";
+      var obj = new Object(); /* 在函数内部定义的变量，函数结束就会被销毁 */
+      obj.name = "zihua";
+    }
+    var person = new Object();
+    setName(person);
+    console.log(person.name); //xiaomi
+    /* console.log(obj.name);// 发生错误，没有定义obj */
+
+
+
+
+
+    function buildUrl() {
+      var qs = "?debug=true";
+      var url = location.href + qs;
+      return url;
+    }
+    var result = buildUrl();
+    console.log(result);
+
+
+
+
+    function add(num1, num2) {
+      sum = num1 + num2;
+      return sum;
+    }
+
+    var result = add(10, 20); //30
+    console.log(sum); //30
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
