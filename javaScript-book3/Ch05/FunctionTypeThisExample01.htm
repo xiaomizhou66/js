@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Function Type this Example</title>
+  <script type="text/javascript">
+    window.color = "red";
+    var o = {
+      color: "blue"
+    };
+
+    function sayColor() {
+      console.log(this.color);
+    }
+
+    sayColor(); //red,调用函数sayColor(),环境是全局window，this相当于window
+    o.sColor = sayColor;
+    /*     相当于重新定义变量o，给对象o定义一个属性sColor，
+        并且将函数变量（指针地址）sayColor赋值给属性sColor,
+        如此相当于对象o变成如下：
+        o={
+          color:"blue",
+          sColor:sayColor
+        }
+      由于sayColor是一个函数变量，sColor也就是一个函数变量，可以有方法sColor(),并且他是对象o的方法，
+    */
+    console.log(o);
+    console.log(o.color); //对象o的color属性值，也就是blue
+    console.log(o.sColor); //对象o的sColor属性值，也就是函数变量sayColor，
+    //也就是函数sayColor(),此时环境是对象o，因此this相当于o
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

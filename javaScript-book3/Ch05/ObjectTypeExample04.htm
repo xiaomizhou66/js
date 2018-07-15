@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Object Type Example 4</title>
+  <script type="text/javascript">
+    function displayInfo() {
+      var output = "";
+
+      if (typeof arguments[0].name == "string") {
+        output += "Name: " + arguments[0].name + "\n";
+        console.log(arguments.toLocaleString());
+      }
+
+      if (typeof arguments[0]["age"] == "number") {
+        output += "Age: " + arguments[0].age + "\n";
+      }
+
+      console.log(output);
+    }
+
+    displayInfo({
+      name: "Nicholas",
+      age: 29
+    });
+
+    displayInfo({
+      name: "Greg"
+    });
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

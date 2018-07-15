@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    function displayInfo(args) {
+      var output = " ";
+
+      if (typeof args.name == "string") {
+        output += "Name: " + args.name + "\n";
+        console.log(args.toLocaleString()); //[object Object]
+      }
+
+      if (typeof args["age"] == "number") {
+        output += "Age: " + args.age + "\n";
+      }
+
+      console.log(output); //Name: Nicholas    Age: 29
+    }
+
+    displayInfo({
+      name: "Nicholas",
+      age: 29
+    });
+
+
+
+    var colors = ["red", "green", "blue"];
+    console.log(colors.join(",")); //red,green,blue
+    console.log(colors.join("||")); //red||green||blue
+    console.log(colors.join("")); //redgreenblue
+    console.log(colors.join()); //red,green,blue
+    console.log(colors.join(undefined)); //red,green,blue
+
+    var colors = ["red", null, "blue"];
+    console.log(colors.join(",")); //red,,blue
+    console.log(colors.join("||")); //red||||blue
+
+
+    var colors = new Array(); //create an array
+    var count = colors.push("red", "green"); //push two items
+    console.log(count); //2
+
+    count = colors.push("black"); //push another item on
+    console.log(count); //3
+
+    var item = colors.pop(); //get the last item
+    console.log(item); //"black"
+    console.log(colors.length); //2
+
+
+    var daynow = new Date();
+    console.log(daynow); //Sat Jul 14 2018 10:34:20 GMT+0800 (中国标准时间)
+    var timethat = new Date(Date.parse("24/7/1992"));
+    console.log(timethat); //Invalid Date
+    var timethat1 = new Date(Date.parse("7 / 24 / 1992"));
+    console.log(timethat1); //Fri Jul 24 1992 00:00:00 GMT+0800 (中国标准时间)
+    var timenow = Date.now();
+    console.log(timenow); //1531541854467
+    console.log(+new Date()); //1531541854467
+
+
+    var text = "mom and dad and baby";
+
+    var pattern = /mom( and dad( and baby)?)?/gi;
+    var matches = pattern.exec(text);
+    console.log(matches);
+    //["mom and dad and baby", " and dad and baby", " and baby"]
+    // index: 0, input: "mom and dad and baby", groups: undefined
+    console.log(matches.index); //0
+    console.log(matches.input); //"mom and dad and baby"
+    console.log(matches[0]); //"mom and dad and baby"
+    console.log(matches[1]); //" and dad and baby"
+    console.log(matches[2]); //" and baby"
+
+
+
+    //test方法,测试字符串,符合模式时返回true,否则返回false
+
+    var str1 = "he"; //文本字符串, 将被作为test方法的参数
+    var reobj1 = /he/; //最简单的RegExp对象,将匹配he这个单词
+    var result1 = reobj1.test(str1); //因为模式 /he/可以匹配到 字符串str1，返回true
+    console.log(result1); //true  
+
+    var str2 = "we"; //文本字符串, 将被作为test方法的参数
+    var reobj2 = /he/; //最简单的RegExp对象,将匹配he这个单词
+    var result2 = reobj2.test(str2); //因为模式 /he/匹配不到 字符串str2，返回false
+    console.log(result2); //false 
+
+    var str3 = "HE"; //文本字符串, 将被作为test方法的参数
+    var reobj3 = /he/; //最简单的RegExp对象,将匹配he这个单词
+    var result3 = reobj3.test(str3); //因为模式 /he/匹配不到 字符串str3，返回false
+    console.log(result3); //false 
+
+
+    var str4 = "HE"; //文本字符串, 将被作为test方法的参数
+    var reobj4 = /he/i; //最简单的RegExp对象,将匹配he，He，hE，HE这些词
+    var result4 = reobj4.test(str4); //因为模式 /he/匹配到 字符串str4，返回true
+    console.log(result4); //true
+
+
+
+    var str5 = "Certainly!He loves her!"; //文本字符串, 将被作为test方法的参数
+    var reobj5 = /^he/i; //RegExp对象,根据上面的元字符可以知道，单独使用^没有中括号，
+    //这里表示将匹配 以^后面的字符he，HE,He，eH开头的字符串，str5并不是
+    var result5 = reobj5.test(str5); //因为模式 /he/匹配不到到 ，返回false
+    console.log(result5); //false
+
+
+    var str6 = "He is a good boy!"; //文本字符串, 将被作为test方法的参数
+    var reobj6 = /^he$/i; //RegExp对象,根据上面的元字符可以知道，单独使用^没有中括号，
+    //这里表示将匹配 以^后面的字符he，HE,He，eH开头的字符串，str5并不是
+    var result6 = reobj6.test(str6); //因为模式 /he/匹配不到到 ，返回false
+    var str7 = "He is a good boy e!";
+    var str8 = "He";
+    var str9 = "He is a good boy he";
+    console.log(result6); //false
+    console.log(reobj6.test(str7)); //false
+    console.log(reobj6.test(str8)); //true
+    console.log(reobj6.test(str9)); //false
+
+
+    var str11 = "user Name"; //用户名包含空格  
+    var reobj11 = /\s/; // \s匹配任何空白字符，包括空格、制表符、换页符等等  
+    console.log(reobj11.test(str11)); //true     
+    var str12 = "user     Name"; //用户名包含制表符  
+    console.log(reobj11.test(str12)); //true  
+
+    var str12 = "variableName"; //变量名必须以字母开头  
+    var reobj12 = /^[a-z]/i; //[]匹配指定范围内的任意字符,这里将匹配英文字母,不区分大小写     
+    console.log(reobj12.test(str12)); //true  
+    var str13 = "123abc";
+    console.log(reobj12.test(str13)); //false
+
+    window.color = "red";
+    var o = {
+      color: "blue"
+    };
+
+    function sayColor() {
+      console.log(this.color);
+    }
+
+    sayColor(); //red,调用函数sayColor(),环境是全局window，this相当于window
+    o.sColor = sayColor;
+    /*     相当于重新定义变量o，给对象o定义一个属性sColor，
+        并且将函数变量（指针地址）sayColor赋值给属性sColor,
+        如此相当于对象o变成如下：
+        o={
+          color:"blue",
+          sColor:sayColor
+        }
+      由于sayColor是一个函数变量，sColor也就是一个函数变量，可以有方法sColor(),并且他是对象o的方法，
+    */
+    console.log(o);
+    console.log(o.color); //对象o的color属性值，也就是blue
+    console.log(o.sColor); //对象o的sColor属性值，也就是函数变量sayColor，
+    //也就是函数sayColor(),此时环境是对象o，因此this相当于o
+  </script>
+</head>
+
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Array Type Example 15</title>
+  <script type="text/javascript">
+    function compare(value1, value2) {
+      if (value1 < value2) {
+        console.log(value1, value2);
+        return 1;
+      } else {
+        console.log(value1, value2);
+        return -1;
+      }
+    }
+
+
+    var values = [0, 90, 5, 10, 15];
+    values.sort(compare);
+    console.log(values); //0,1,5,10,15
+
+    function compare1(value1, value2) {
+
+    }
+
+    // 对这五个人排序，按照身高 “低到高” 的规则排序，如果身高相同，则钱多的排在前面。
+    var users = [{
+        name: 'zihua5',
+        high: 15,
+        money: 19
+      },
+      {
+        name: 'zihua3',
+        high: 15,
+        money: 12
+      },
+      {
+        name: 'zihua2',
+        high: 9,
+        money: 88
+      },
+      {
+        name: 'zihua1',
+        high: 23,
+        money: 55
+      },
+      {
+        name: 'zihua4',
+        high: 19,
+        money: 35
+      }
+    ]
+    console.log(users.sort(compare1));
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
