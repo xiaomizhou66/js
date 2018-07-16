@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>RegExp exec() Example 2</title>
-    <script type="text/javascript">
-        var text = "cat, bat, sat, fat";        
-        var pattern1 = /.at/;
-        
-        var matches = pattern1.exec(text);        
-        alert(matches.index);    //0
-        alert(matches[0]);       //"cat"
-        alert(pattern1.lastIndex);//0
+  <title>RegExp exec() Example 2</title>
+  <script type="text/javascript">
+    //非全局匹配，总是匹配到一样的信息
+    var text = "cat, bat, sat, fat";
+    var pattern1 = /.at/;
 
-        matches = pattern1.exec(text);        
-        alert(matches.index);    //0
-        alert(matches[0]);       //"cat"
-        alert(pattern1.lastIndex);//0
+    var matches = pattern1.exec(text);
+    console.log(matches); //["cat", index: 0, input: "cat, bat, sat, fat", groups: undefined]
+    console.log(matches.index); //0
+    console.log(matches[0]); //"cat"
+    console.log(pattern1.lastIndex); //0
 
-        var pattern2 = /.at/g;
-        
-        var matches = pattern2.exec(text);        
-        alert(matches.index);    //0
-        alert(matches[0]);       //"cat"
-        alert(pattern2.lastIndex);//0
+    matches = pattern1.exec(text);
+    console.log(matches); //["cat", index: 0, input: "cat, bat, sat, fat", groups: undefined]
+    console.log(matches.index); //0
+    console.log(matches[0]); //"cat"
+    console.log(pattern1.lastIndex); //0
 
-        matches = pattern2.exec(text);        
-        alert(matches.index);    //5
-        alert(matches[0]);       //"bat"
-        alert(pattern2.lastIndex);//0
 
-    </script>
+    //全局匹配，第二次匹配，是从上一次匹配到的字符串后面的字符串开始匹配。
+    var text = "cat, bat, sat, fat";
+    var pattern2 = /.at/g;
+    var matches = pattern2.exec(text);
+    console.log(matches); //["cat", index: 0, input: "cat, bat, sat, fat", groups: undefined]
+    //这个模式没有组，所以得到的数组只有一项，就是模式匹配项
+    console.log(matches.index); //0
+    console.log(matches[0]); //"cat"
+    console.log(pattern2.lastIndex); //0
+
+    matches = pattern2.exec(text);
+    console.log(matches); //["bat", index: 5, input: "cat, bat, sat, fat", groups: undefined]
+    console.log(matches.index); //5
+    console.log(matches[0]); //"bat"
+    console.log(pattern2.lastIndex); //0
+  </script>
 </head>
+
 <body>
 
 </body>
+
 </html>

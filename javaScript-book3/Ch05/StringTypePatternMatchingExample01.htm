@@ -1,56 +1,81 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>String Type Pattern Matching Example</title>
-    <script type="text/javascript">
-    
-        var text = "cat, bat, sat, fat"; 
-        var pattern = /.at/;
-        
-        var matches = text.match(pattern);        
-        alert(matches.index);        //0
-        alert(matches[0]);           //"cat"
-        alert(pattern.lastIndex);    //0
+  <title>String Type Pattern Matching Example</title>
+  <script type="text/javascript">
+    var text = "cat, bat, sat, fat";
+    var pattern = /.at/;
 
-        var pos = text.search(/at/);
-        alert(pos);   //1
+    var matches = text.match(pattern);
+    console.log(matches);
+    console.log(matches.index); //0
+    console.log(matches[0]); //"cat"
+    console.log(pattern.lastIndex); //0
 
-        var result = text.replace("at", "ond");
-        alert(result);    //"cond, bat, sat, fat"
+    var pos = text.search(/at/);
+    console.log(pos); //1
 
-        result = text.replace(/at/g, "ond");
-        alert(result);    //"cond, bond, sond, fond"
+    var result = text.replace("at", "ond");
+    console.log(result); //"cond, bat, sat, fat"
 
-        result = text.replace(/(.at)/g, "word ($1)");
-        alert(result);    //word (cat), word (bat), word (sat), word (fat)
-        
-        function htmlEscape(text){
-            return text.replace(/[<>"&]/g, function(match, pos, originalText){
-                switch(match){
-                    case "<":
-                        return "&lt;";
-                    case ">":
-                        return "&gt;";
-                    case "&":
-                        return "&amp;";
-                    case "\"":
-                        return "&quot;";
-                }             
-            });
+    result = text.replace(/at/g, "ond");
+    console.log(result); //"cond, bond, sond, fond"
+
+    result = text.replace(/(.at)/g, "word ($1)");
+    console.log(result); //word (cat), word (bat), word (sat), word (fat)
+    console.log(text);
+
+
+
+
+
+
+
+
+    //下面是 replace()方法
+
+    function htmlEscape(text) {
+      return text.replace(/[<>"&]/g, function (match, pos, originalText) {
+        /*        console.log(match); // 
+               console.log(pos);
+               console.log(originalText); */
+        switch (match) {
+          case "<":
+            return "&lt;";
+          case ">":
+            return "&gt;";
+          case "&":
+            return "&amp;";
+          case "\"":
+            return "&quot;";
         }
-        
-        alert(htmlEscape("<p class=\"greeting\">Hello world!</p>")); //&lt;p class=&quot;greeting&quot;&gt;Hello world!&lt;/p&gt;
+      });
 
-        var colorText = "red,blue,green,yellow";
-        var colors1 = colorText.split(",");      //["red", "blue", "green", "yellow"]
-        var colors2 = colorText.split(",", 2);   //["red", "blue"]
-        var colors3 = colorText.split(/[^\,]+/); //["", ",", ",", ",", ""]
+    }
+
+    console.log(htmlEscape("<p class=\"greeting\">Hello world!</p>")); //&lt;p class=&quot;greeting&quot;&gt;Hello world!&lt;/p&gt;
 
 
-        
-    </script>
+
+
+
+    //下面是split方法
+    var colorText = "red,blue,green,yellow";
+    var colors1 = colorText.split(","); //["red", "blue", "green", "yellow"]
+    console.log(colors1);
+    console.log(colorText);
+    var colors2 = colorText.split(",", 2); //["red", "blue"]
+    console.log(colors2);
+    console.log(colorText);
+    var colors3 = colorText.split(/[^\,]+/); //["", ",", ",", ",", ""]
+    console.log(colors3);
+    console.log(colorText);
+  </script>
 </head>
+
 <body>
 
 </body>
+
 </html>

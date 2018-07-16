@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>RegExp Constructor Properties Example</title>
-    <script type="text/javascript">
-    
-        var text = "this has been a short summer";
-        var pattern = /(.)hort/g;
-        
-        /*
-         * Note: Opera doesn't support input, lastMatch, lastParen, or multiline.
-         * Internet Explorer doesn't support multiline.
-         */        
-        if (pattern.test(text)){
-            alert(RegExp.input);               //this has been a short summer
-            alert(RegExp.leftContext);         //this has been a            
-            alert(RegExp.rightContext);        // summer
-            alert(RegExp.lastMatch);           //short
-            alert(RegExp.lastParen);           //s
-            alert(RegExp.multiline);           //false
-        }
 
-    </script>
+<head>
+  <title>RegExp Constructor Properties Example</title>
+  <script type="text/javascript">
+    var text = "this has been a short summer";
+    var pattern = /(.)hort/g;
+
+    /*
+     * Note: Opera doesn't support input, lastMatch, lastParen, or multiline.
+     * Internet Explorer doesn't support multiline.
+     */
+    if (pattern.test(text)) {
+      console.log(RegExp.input); //this has been a short summer
+      console.log(RegExp.leftContext); //this has been a            
+      console.log(RegExp.rightContext); // summer
+      console.log(RegExp.lastMatch); //short
+      console.log(RegExp.lastParen); //s
+      console.log(RegExp.multiline); //false
+
+
+      console.log(RegExp.$0); // undefined   为什么编号0不能这样用？？？
+      console.log(RegExp.$1); //s，   第一个捕获组（.）转义就是 s
+      console.log(RegExp.$2); //""   没有第二个捕获组
+    }
+  </script>
 </head>
+
 <body>
 
 </body>
+
 </html>

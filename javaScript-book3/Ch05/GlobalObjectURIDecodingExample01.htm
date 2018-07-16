@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Global Object URI Decoding Example</title>
-    <script type="text/javascript">
-    
-        var uri = "http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start";
-        
-        //http%3A%2F%2Fwww.wrox.com%2Fillegal value.htm%23start
-        alert(decodeURI(uri));
-        
-        //http://www.wrox.com/illegal value.htm#start
-        alert(decodeURIComponent(uri));
-        
-    </script>
+  <title>Global Object URI Decoding Example</title>
+  <script type="text/javascript">
+    var uri = "http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start";
+
+    //http%3A%2F%2Fwww.wrox.com%2Fillegal value.htm%23start
+    //  除了空格码之外，其他的特殊码都没有解码成功
+    console.log(decodeURI(uri));
+
+
+    //http://www.wrox.com/illegal value.htm#start
+    //所有的特殊字符编码都被解码了
+    console.log(decodeURIComponent(uri));
+  </script>
 </head>
+
 <body>
 
 </body>
+
 </html>
