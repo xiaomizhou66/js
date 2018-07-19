@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Data Properties Example</title>
-    <script type="text/javascript">
+  <title>Data Properties Example</title>
+  <script type="text/javascript">
+    var person = {};
+    Object.defineProperty(person, "name", {
+      writable: false,
+      value: "Nicholas"
+    });
 
-        var person = {};
-        Object.defineProperty(person, "name", {
-            writable: false,
-            value: "Nicholas"
-        });
-        
-        alert(person.name);
-        person.name = "Michael";
-        alert(person.name);
+    console.log(person.name); //Nicholas
+    person.name = "Michael";
+    console.log(person.name); //Nicholas
 
 
-    </script>
+    var person1 = {};
+    Object.defineProperty(person1, "name", {
+      writable: true,
+      value: "Nicholas"
+    });
+
+    console.log(person1.name); //Nicholas
+    person1.name = "Michael";
+    console.log(person1.name); //Michael
+
+
+    var person2 = {};
+    Object.defineProperty(person2, "name", {
+      /*       writable:true, */ //不是说默认值为true么，为什么这里也不能修改？
+      value: "Nicholas"
+    });
+
+    console.log(person2.name); //Nicholas
+    person2.name = "Michael";
+    console.log(person2.name); //Nicholas
+  </script>
 </head>
+
 <body>
-    <p>Note: this example only works in browsers that have implemented the ECMAScript 5 <code>Object.defineProperty()</code> method (IE9 and Firefox 4).</p>
+  <p>Note: this example only works in browsers that have implemented the ECMAScript 5
+    <code>Object.defineProperty()</code> method (IE9 and Firefox 4).</p>
 </body>
+
 </html>

@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Data Properties Example</title>
-    <script type="text/javascript">
+  <title>Data Properties Example</title>
+  <script type="text/javascript">
+    var person = {};
+    Object.defineProperty(person, "name", {
+      configurable: false,
+      value: "Nicholas"
+    });
 
-        var person = {};
-        Object.defineProperty(person, "name", {
-            configurable: false,
-            value: "Nicholas"
-        });
-        
-        //throws error
-        Object.defineProperty(person, "name", {
-            configurable: true,
-            value: "Nicholas"
-        });
+    //throws error  下面的代码会出现重复定义，报错
+    /*         Object.defineProperty(person, "name", {
+                configurable: true,
+                value: "Nicholas"
+            }); */
 
-    </script>
+
+    var person = {};
+    Object.defineProperty(person, "name", {
+      configurable: true,
+      value: "Nicholas"
+    });
+
+    //这样就不会出错，因为上面试可以删除属性的，原属性会被新属性值设置覆盖
+    Object.defineProperty(person, "name", {
+      configurable: true,
+      value: "Nicholas"
+    });
+  </script>
 </head>
+
 <body>
-    <p>Note: this example only works in browsers that have implemented the ECMAScript 5 <code>Object.defineProperty()</code> method (IE9 and Firefox 4).</p>
+  <p>Note: this example only works in browsers that have implemented the ECMAScript 5
+    <code>Object.defineProperty()</code> method (IE9 and Firefox 4).</p>
 </body>
+
 </html>
